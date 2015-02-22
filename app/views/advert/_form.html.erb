@@ -1,0 +1,22 @@
+<div class="col-md-6">
+<%= simple_form_for (@advert), html: {multipart: true},  url: advert_index_path do |f| %>
+	<% if @advert.errors.any? %>
+	    <div id="error_explanation">
+	      	<h2><%= pluralize(@advert.errors.count, "error") %> prohibited this advert from being saved:</h2>
+		    <ul>
+			    <% @advert.errors.full_messages.each do |msg| %>
+			    	<li><%= msg %></li>
+			    <% end %>
+		    </ul>
+	    </div>
+	  <% end %>
+
+  <%= f.input :title, label: 'Your advert title please' %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :price %>	
+  <%= f.association :category %>
+  <%= f.input :user_id, label: 'Your email', disabled: true, placeholder: "#{current_user.email}" %>
+  <%#= f.file_field :img_file_name_file_name %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+</div>

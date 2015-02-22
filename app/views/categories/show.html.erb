@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @category.title %>
+
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
+
+<%= @category.advert.each do |advert| %>
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<%= advert.title %>
+			</div>
+			<div class="panel-body">
+			    <%= advert.description %>
+			    <p>Price: <span class="label label-danger"><%= advert.price %></span></p>
+			    <p>category: <%# @category.title %>
+			</div>
+			<div class="panel-footer">
+				<%= link_to 'Show', advert %> | <%= link_to 'Edit', edit_advert_path(advert) %> | <%= link_to 'Destroy', advert, method: :delete, data: { confirm: 'Are you sure?'} %>
+			</div>
+		</div>
+	</div>	
+<% end %>
